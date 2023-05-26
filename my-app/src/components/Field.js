@@ -1,24 +1,30 @@
 import styles from './Field.module.css'
 
-const FieldLayout = ({ field, currentPlayer, setfield, setCurrentPlayer }) => (
+const FieldLayout = ({
+	field,
+	currentPlayer,
+	setfield,
+	setCurrentPlayer,
+	onClick,
+}) => (
 	<div>
 		<div>
 			{field.slice(0, 3).map((el, idx) => (
-				<button key={idx} className={styles.x}>
+				<button key={idx} className={styles.x} onClick={onClick}>
 					{el}
 				</button>
 			))}
 		</div>
 		<div>
 			{field.slice(3, 6).map((el, idx) => (
-				<button key={idx} className={styles.o}>
+				<button key={idx} className={styles.o} onClick={onClick}>
 					{el}
 				</button>
 			))}
 		</div>
 		<div>
 			{field.slice(6, 9).map((el, idx) => (
-				<button key={idx} className={styles.x}>
+				<button key={idx} className={styles.x} onClick={onClick}>
 					{el}
 				</button>
 			))}
@@ -26,17 +32,20 @@ const FieldLayout = ({ field, currentPlayer, setfield, setCurrentPlayer }) => (
 	</div>
 )
 
-export const Field = ({ field, currentPlayer, setfield, setCurrentPlayer }) => {
+export const Field = ({
+	field,
+	currentPlayer,
+	setfield,
+	setCurrentPlayer,
+	onClick,
+}) => {
 	return (
-		<>
-			<div className={styles.box}>
-				<FieldLayout
-					field={field}
-					setfield={setfield}
-					currentPlayer={currentPlayer}
-					setCurrentPlayer={setCurrentPlayer}
-				/>
-			</div>
-		</>
+		<FieldLayout
+			field={field}
+			setfield={setfield}
+			currentPlayer={currentPlayer}
+			setCurrentPlayer={setCurrentPlayer}
+			onClick={onClick}
+		/>
 	)
 }

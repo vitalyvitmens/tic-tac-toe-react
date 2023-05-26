@@ -4,7 +4,7 @@ import styles from './app.module.css'
 // import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-const GameLayout = ({ a, setA }) => <div className={styles.game}></div>
+const GameLayout = () => <div className={styles.game}></div>
 //! Stateful-компонент
 export const Game = () => {
 	const [currentPlayer, setCurrentPlayer] = useState('X')
@@ -17,6 +17,12 @@ export const Game = () => {
 			Начать заново
 		</button>
 	)
+
+	const onClick = (e) => {
+		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
+		console.log(currentPlayer)
+    console.log(e)
+	}
 
 	return (
 		<>
@@ -35,6 +41,7 @@ export const Game = () => {
 					currentPlayer={currentPlayer}
 					setfield={setfield}
 					setCurrentPlayer={setCurrentPlayer}
+					onClick={onClick}
 				/>
 				<ResetButton />
 			</div>
