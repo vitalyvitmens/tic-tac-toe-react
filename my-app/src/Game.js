@@ -36,6 +36,7 @@ export const Game = () => {
 		])
 		setIsGameEnded(false)
 		setIsDraw(false)
+		setCurrentPlayer('X' ? 'O' : 'X')
 	}
 
 	const ResetButton = () => (
@@ -46,7 +47,13 @@ export const Game = () => {
 
 	const onClick = (e) => {
 		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
-		console.log(e.target)
+		// console.log(field.value = e)
+		field.value = currentPlayer
+		// console.log(e)
+		console.log((field.value = currentPlayer))
+		// field.value = e
+		// console.log(field.value = e)
+		// return e
 	}
 
 	return (

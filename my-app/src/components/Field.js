@@ -12,7 +12,7 @@ const FieldLayout = ({
 			<button
 				key={id}
 				className={currentPlayer === 'X' ? styles.x : styles.o}
-				onClick={onClick}
+				onClick={(e) => onClick(e = value)}
 			>
 				{value}
 			</button>
