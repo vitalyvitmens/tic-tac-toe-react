@@ -7,28 +7,19 @@ const FieldLayout = ({
 	setCurrentPlayer,
 	onClick,
 }) => (
-	<div>
-		<div>
-			{field.slice(0, 3).map((el, idx) => (
-				<button key={idx} className={styles.x} onClick={onClick}>
-					{el}
-				</button>
-			))}
-		</div>
-		<div>
-			{field.slice(3, 6).map((el, idx) => (
-				<button key={idx} className={styles.o} onClick={onClick}>
-					{el}
-				</button>
-			))}
-		</div>
-		<div>
-			{field.slice(6, 9).map((el, idx) => (
-				<button key={idx} className={styles.x} onClick={onClick}>
-					{el}
-				</button>
-			))}
-		</div>
+	<div className={styles.box}>
+		{field.map((el, idx) => (
+			<button
+				key={idx}
+				className={currentPlayer === 'X' ? styles.x : styles.o}
+				onClick={onClick}
+			>
+				{field[el]}
+				{idx}
+				{console.log('idx:', idx)}
+				{console.log('el:', el)}
+			</button>
+		))}
 	</div>
 )
 

@@ -20,8 +20,8 @@ export const Game = () => {
 
 	const onClick = (e) => {
 		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
-		console.log(currentPlayer)
-    console.log(e)
+		// console.log(currentPlayer)
+    // console.log(e)
 	}
 
 	return (
