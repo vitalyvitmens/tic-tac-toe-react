@@ -8,16 +8,13 @@ const FieldLayout = ({
 	onClick,
 }) => (
 	<div className={styles.box}>
-		{field.map((el, idx) => (
+		{field.map(({ id, value }) => (
 			<button
-				key={idx}
+				key={id}
 				className={currentPlayer === 'X' ? styles.x : styles.o}
 				onClick={onClick}
 			>
-				{field[el]}
-				{idx}
-				{console.log('idx:', idx)}
-				{console.log('el:', el)}
+				{value}
 			</button>
 		))}
 	</div>

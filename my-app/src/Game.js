@@ -10,18 +10,43 @@ export const Game = () => {
 	const [currentPlayer, setCurrentPlayer] = useState('X')
 	const [isGameEnded, setIsGameEnded] = useState(false)
 	const [isDraw, setIsDraw] = useState(false)
-	const [field, setfield] = useState(['', '', '', '', '', '', '', '', ''])
+	const [field, setfield] = useState([
+		{ id: '0', value: '0' },
+		{ id: '1', value: '1' },
+		{ id: '2', value: '2' },
+		{ id: '3', value: '3' },
+		{ id: '4', value: '4' },
+		{ id: '5', value: '5' },
+		{ id: '6', value: '6' },
+		{ id: '7', value: '7' },
+		{ id: '8', value: '8' },
+	])
+
+	const playAgainFn = () => {
+		setfield([
+			{ id: '0', value: '' },
+			{ id: '1', value: '' },
+			{ id: '2', value: '' },
+			{ id: '3', value: '' },
+			{ id: '4', value: '' },
+			{ id: '5', value: '' },
+			{ id: '6', value: '' },
+			{ id: '7', value: '' },
+			{ id: '8', value: '' },
+		])
+		setIsGameEnded(false)
+		setIsDraw(false)
+	}
 
 	const ResetButton = () => (
-		<button className={styles.resetBtn} onClick={null}>
+		<button className={styles.resetBtn} onClick={playAgainFn}>
 			Начать заново
 		</button>
 	)
 
 	const onClick = (e) => {
 		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
-		// console.log(currentPlayer)
-    // console.log(e)
+		console.log(e.target)
 	}
 
 	return (
