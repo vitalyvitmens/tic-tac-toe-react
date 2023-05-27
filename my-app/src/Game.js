@@ -10,29 +10,36 @@ export const Game = () => {
 	const [currentPlayer, setCurrentPlayer] = useState('X')
 	const [isGameEnded, setIsGameEnded] = useState(false)
 	const [isDraw, setIsDraw] = useState(false)
-	const [field, setfield] = useState([
-		{ id: '0', value: '0' },
-		{ id: '1', value: '1' },
-		{ id: '2', value: '2' },
-		{ id: '3', value: '3' },
-		{ id: '4', value: '4' },
-		{ id: '5', value: '5' },
-		{ id: '6', value: '6' },
-		{ id: '7', value: '7' },
-		{ id: '8', value: '8' },
+	const [field, setField] = useState([
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
+		{ value: '' },
 	])
 
+	const handlechange = (index) => {
+		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
+		const newField = [...field]
+		newField[index].value = currentPlayer
+		setField(newField)
+	}
+
 	const playAgainFn = () => {
-		setfield([
-			{ id: '0', value: '' },
-			{ id: '1', value: '' },
-			{ id: '2', value: '' },
-			{ id: '3', value: '' },
-			{ id: '4', value: '' },
-			{ id: '5', value: '' },
-			{ id: '6', value: '' },
-			{ id: '7', value: '' },
-			{ id: '8', value: '' },
+		setField([
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
+			{ value: '' },
 		])
 		setIsGameEnded(false)
 		setIsDraw(false)
@@ -44,17 +51,6 @@ export const Game = () => {
 			Начать заново
 		</button>
 	)
-
-	const onClick = (e) => {
-		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
-		// console.log(field.value = e)
-		field.value = currentPlayer
-		// console.log(e)
-		console.log((field.value = currentPlayer))
-		// field.value = e
-		// console.log(field.value = e)
-		// return e
-	}
 
 	return (
 		<>
@@ -71,9 +67,9 @@ export const Game = () => {
 				<Field
 					field={field}
 					currentPlayer={currentPlayer}
-					setfield={setfield}
+					setField={setField}
 					setCurrentPlayer={setCurrentPlayer}
-					onClick={onClick}
+					handlechange={handlechange}
 				/>
 				<ResetButton />
 			</div>
