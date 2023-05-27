@@ -2,15 +2,11 @@ import styles from './Information.module.css'
 import PropTypes from 'prop-types'
 
 const InformationLayout = ({ isDraw, isGameEnded, currentPlayer }) => (
-	<div>
-		<div className={styles.field}>{isDraw ? 'Ничья' : null}</div>
-		<div className={styles.field}>
-			{!isDraw && isGameEnded ? `Победа: ${currentPlayer}` : null}
-		</div>
-		<div className={styles.field}>
-			{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}
-		</div>
-		<div className={styles.field}>{isGameEnded ? 'Конец игры!' : null}</div>
+	<div className={styles.field}>
+		<div>{isDraw ? 'Ничья' : null}</div>
+		<div>{!isDraw && isGameEnded ? `Победа: ${currentPlayer}` : null}</div>
+		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
+		<div>{isGameEnded ? 'Конец игры!' : null}</div>
 	</div>
 )
 
