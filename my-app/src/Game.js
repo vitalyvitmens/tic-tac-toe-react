@@ -1,7 +1,7 @@
 import { Information } from './components/Information'
 import { Field } from './components/Field'
 import styles from './app.module.css'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
 const GameLayout = ({
@@ -26,6 +26,15 @@ const GameLayout = ({
 		<ResetButton ResetButton={ResetButton} />
 	</div>
 )
+
+GameLayout.propTypes = {
+	isDraw: PropTypes.bool,
+	isGameEnded: PropTypes.bool,
+	currentPlayer: PropTypes.string,
+	field: PropTypes.array,
+	handlechange: PropTypes.func,
+	ResetButton: PropTypes.func,
+}
 
 export const Game = () => {
 	const [currentPlayer, setCurrentPlayer] = useState('X')
