@@ -18,19 +18,11 @@ const FieldLayout = ({ field, currentPlayer, handlechange }) => (
 	</div>
 )
 
-export const Field = ({
-	field,
-	currentPlayer,
-	setField,
-	setCurrentPlayer,
-	handlechange,
-}) => {
+export const Field = ({ field, currentPlayer, handlechange }) => {
 	return (
 		<FieldLayout
 			field={field}
-			setField={setField}
 			currentPlayer={currentPlayer}
-			setCurrentPlayer={setCurrentPlayer}
 			handlechange={handlechange}
 		/>
 	)

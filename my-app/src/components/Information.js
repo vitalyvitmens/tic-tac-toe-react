@@ -1,13 +1,6 @@
 import styles from './Information.module.css'
 
-const InformationLayout = ({
-	isDraw,
-	isGameEnded,
-	currentPlayer,
-	setIsDraw,
-	setIsGameEnded,
-	setCurrentPlayer,
-}) => (
+const InformationLayout = ({ isDraw, isGameEnded, currentPlayer }) => (
 	<div>
 		<div className={styles.field}>{isDraw ? 'Ничья' : null}</div>
 		<div className={styles.field}>
@@ -20,24 +13,12 @@ const InformationLayout = ({
 	</div>
 )
 
-export const Information = ({
-	isDraw,
-	isGameEnded,
-	currentPlayer,
-	setIsDraw,
-	setIsGameEnded,
-	setCurrentPlayer,
-}) => {
+export const Information = ({ isDraw, isGameEnded, currentPlayer }) => {
 	return (
-		<>
-			<InformationLayout
-				isDraw={isDraw}
-				isGameEnded={isGameEnded}
-				currentPlayer={currentPlayer}
-				setIsDraw={setIsDraw}
-				setIsGameEnded={setIsGameEnded}
-				setCurrentPlayer={setCurrentPlayer}
-			/>
-		</>
+		<InformationLayout
+			isDraw={isDraw}
+			isGameEnded={isGameEnded}
+			currentPlayer={currentPlayer}
+		/>
 	)
 }
