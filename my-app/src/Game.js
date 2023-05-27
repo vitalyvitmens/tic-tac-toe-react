@@ -11,12 +11,17 @@ const GameLayout = ({
 	field,
 	handlechange,
 	ResetButton,
+	setIsDraw,
+	setIsGameEnded,
 }) => (
 	<div className={styles.game}>
 		<Information
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
 			currentPlayer={currentPlayer}
+			field={field}
+			setIsDraw={setIsDraw}
+			setIsGameEnded={setIsGameEnded}
 		/>
 		<Field
 			field={field}
@@ -34,6 +39,8 @@ GameLayout.propTypes = {
 	field: PropTypes.array,
 	handlechange: PropTypes.func,
 	ResetButton: PropTypes.func,
+	setIsDraw: PropTypes.func,
+	setIsGameEnded: PropTypes.func,
 }
 
 export const Game = () => {

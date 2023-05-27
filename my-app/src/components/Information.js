@@ -16,12 +16,42 @@ InformationLayout.propTypes = {
 	currentPlayer: PropTypes.string,
 }
 
-export const Information = ({ isDraw, isGameEnded, currentPlayer }) => {
+export const Information = ({
+	isDraw,
+	isGameEnded,
+	currentPlayer,
+	field,
+	setIsDraw,
+	setIsGameEnded,
+}) => {
+	const winX = [
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+	]
+
+	if (
+		!winX
+			.slice(0, 3)
+			.find((item, index) => item.value !== field.slice(0, 3)[index].value)
+	) {
+		console.log('Победа: X')
+		// setIsDraw(false)
+		// setIsGameEnded(true)
+	}
+
 	return (
 		<InformationLayout
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
 			currentPlayer={currentPlayer}
+			field={field}
 		/>
 	)
 }
