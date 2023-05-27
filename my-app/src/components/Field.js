@@ -3,12 +3,17 @@ import PropTypes from 'prop-types'
 
 const FieldLayout = ({ field, currentPlayer, handlechange }) => (
 	<div className={styles.box}>
-		{field.map((cell, index) => {
+		{field.map((cell, index, arr) => {
 			return (
 				<button
 					className={currentPlayer === 'X' ? styles.x : styles.o}
 					onClick={() => {
-						handlechange(index)
+						if (!cell.value) {
+							// console.log(index, cell, cell.value, arr)
+							handlechange(index)
+						} else {
+							return
+						}
 					}}
 					key={index}
 				>

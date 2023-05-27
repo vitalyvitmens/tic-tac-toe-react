@@ -57,6 +57,9 @@ export const Game = () => {
 		const newField = [...field]
 		newField[index].value = currentPlayer
 		setField(newField)
+		if (field.filter((el) => el.value === '').length === 0) {
+			setIsGameEnded(true)
+		}
 	}
 
 	const ResetButton = () => (
