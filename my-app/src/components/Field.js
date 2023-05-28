@@ -1,20 +1,20 @@
 import styles from './Field.module.css'
 import PropTypes from 'prop-types'
 
-const FieldLayout = ({ field, handlechange }) => (
+const FieldLayout = ({ field, handleChange }) => (
 	<div className={styles.box}>
 		{field.map((cell, index) => {
 			return (
 				<button
 					className={cell.value === 'X' ? styles.x : styles.o}
+					key={index}
 					onClick={() => {
 						if (!cell.value) {
-							handlechange(index)
+							handleChange(index)
 						} else {
 							return
 						}
 					}}
-					key={index}
 				>
 					{cell.value}
 				</button>
@@ -25,14 +25,14 @@ const FieldLayout = ({ field, handlechange }) => (
 
 FieldLayout.propTypes = {
 	field: PropTypes.array,
-	handlechange: PropTypes.func,
+	handleChange: PropTypes.func,
 }
 
-export const Field = ({ field, handlechange }) => {
-	Field.propTypes = {
-		field: PropTypes.array,
-		handlechange: PropTypes.func,
-	}
+export const Field = ({ field, handleChange }) => {
+	return <FieldLayout field={field} handleChange={handleChange} />
+}
 
-	return <FieldLayout field={field} handlechange={handlechange} />
+Field.propTypes = {
+	field: PropTypes.array,
+	handleChange: PropTypes.func,
 }

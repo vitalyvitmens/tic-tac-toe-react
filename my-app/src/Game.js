@@ -1,19 +1,16 @@
 import { Information } from './components/Information'
 import { Field } from './components/Field'
 import styles from './app.module.css'
-import PropTypes from 'prop-types'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 const GameLayout = ({
 	isDraw,
 	isGameEnded,
 	currentPlayer,
 	field,
-	handlechange,
+	handleChange,
 	ResetButton,
-	setIsDraw,
-	setIsGameEnded,
-	winner,
 }) => (
 	<div className={styles.game}>
 		<Information
@@ -21,15 +18,8 @@ const GameLayout = ({
 			isGameEnded={isGameEnded}
 			currentPlayer={currentPlayer}
 			field={field}
-			setIsDraw={setIsDraw}
-			setIsGameEnded={setIsGameEnded}
-			winner={winner}
 		/>
-		<Field
-			field={field}
-			currentPlayer={currentPlayer}
-			handlechange={handlechange}
-		/>
+		<Field field={field} handleChange={handleChange} />
 		<ResetButton ResetButton={ResetButton} />
 	</div>
 )
@@ -39,11 +29,8 @@ GameLayout.propTypes = {
 	isGameEnded: PropTypes.bool,
 	currentPlayer: PropTypes.string,
 	field: PropTypes.array,
-	handlechange: PropTypes.func,
+	handleChange: PropTypes.func,
 	ResetButton: PropTypes.func,
-	setIsDraw: PropTypes.func,
-	setIsGameEnded: PropTypes.func,
-	winner: PropTypes.func,
 }
 
 export const Game = () => {
@@ -62,7 +49,7 @@ export const Game = () => {
 		{ value: '' },
 	])
 
-	const handlechange = (index) => {
+	const handleChange = (index) => {
 		currentPlayer === 'X' ? setCurrentPlayer('O') : setCurrentPlayer('X')
 		const newField = [...field]
 		newField[index].value = currentPlayer
@@ -71,6 +58,7 @@ export const Game = () => {
 			setIsGameEnded(true)
 			setIsDraw(true)
 		} else {
+      return
 		}
 	}
 
@@ -103,7 +91,7 @@ export const Game = () => {
 			isGameEnded={isGameEnded}
 			currentPlayer={currentPlayer}
 			field={field}
-			handlechange={handlechange}
+			handleChange={handleChange}
 			ResetButton={ResetButton}
 		/>
 	)

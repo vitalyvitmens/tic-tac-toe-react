@@ -18,13 +18,6 @@ InformationLayout.propTypes = {
 }
 
 export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
-	Information.propTypes = {
-		isDraw: PropTypes.bool,
-		isGameEnded: PropTypes.bool,
-		currentPlayer: PropTypes.string,
-		field: PropTypes.array,
-	}
-
 	const winX = [
 		{ value: 'X' },
 		{ value: 'X' },
@@ -162,6 +155,8 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
+		} else {
+			return
 		}
 	}
 
@@ -176,4 +171,12 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 			win={win}
 		/>
 	)
+}
+
+Information.propTypes = {
+	isDraw: PropTypes.bool,
+	isGameEnded: PropTypes.bool,
+	currentPlayer: PropTypes.string,
+	field: PropTypes.array,
+	win: PropTypes.string,
 }
