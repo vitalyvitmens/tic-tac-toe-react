@@ -86,45 +86,111 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 			isGameEnded = true
 			return 'O'
 		} else if (
-			String(arr1.slice(2, 3).map((el) => el.value)) &&
-			String(arr1.slice(4, 5).map((el) => el.value)) &&
-			String(arr1.slice(6, 7).map((el) => el.value)) ===
-				String(arr2.slice(2, 3).map((el) => el.value)) &&
-			String(arr2.slice(4, 5).map((el) => el.value)) &&
-			String(arr2.slice(6, 7).map((el) => el.value))
+			String(arr1[2].value) +
+			String(arr1[4].value) +
+			String(arr1[6].value) ===
+      String(arr2[2].value) +
+			String(arr2[4].value) +
+			String(arr2[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1.slice(2, 3).map((el) => el.value)) &&
-			String(arr1.slice(4, 5).map((el) => el.value)) &&
-			String(arr1.slice(6, 7).map((el) => el.value)) ===
-				String(arr3.slice(2, 3).map((el) => el.value)) &&
-			String(arr3.slice(4, 5).map((el) => el.value)) &&
-			String(arr3.slice(6, 7).map((el) => el.value))
+			String(arr1[2].value) +
+			String(arr1[4].value) +
+			String(arr1[6].value) ===
+      String(arr3[2].value) +
+			String(arr3[4].value) +
+			String(arr3[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
 		} else if (
-			String(arr1.slice(0, 1).map((el) => el.value)) &&
-			String(arr1.slice(4, 5).map((el) => el.value)) &&
-			String(arr1.slice(8, 9).map((el) => el.value)) ===
-				String(arr2.slice(0, 1).map((el) => el.value)) &&
-			String(arr2.slice(4, 5).map((el) => el.value)) &&
-			String(arr2.slice(8, 9).map((el) => el.value))
+			String(arr1[0].value) +
+			String(arr1[4].value) +
+			String(arr1[8].value) ===
+      String(arr2[0].value) +
+			String(arr2[4].value) +
+			String(arr2[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1.slice(0, 1).map((el) => el.value)) &&
-			String(arr1.slice(4, 5).map((el) => el.value)) &&
-			String(arr1.slice(8, 9).map((el) => el.value)) ===
-				String(arr3.slice(0, 1).map((el) => el.value)) &&
-			String(arr3.slice(4, 5).map((el) => el.value)) &&
-			String(arr3.slice(8, 9).map((el) => el.value))
+			String(arr1[0].value) +
+			String(arr1[4].value) +
+			String(arr1[8].value) ===
+      String(arr3[0].value) +
+			String(arr3[4].value) +
+			String(arr3[8].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+    } else if (
+			String(arr1[0].value) +
+			String(arr1[3].value) +
+			String(arr1[6].value) ===
+      String(arr2[0].value) +
+			String(arr2[3].value) +
+			String(arr2[6].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1[0].value) +
+			String(arr1[3].value) +
+			String(arr1[6].value) ===
+      String(arr3[0].value) +
+			String(arr3[3].value) +
+			String(arr3[6].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+    } else if (
+			String(arr1[1].value) +
+			String(arr1[4].value) +
+			String(arr1[7].value) ===
+      String(arr2[1].value) +
+			String(arr2[4].value) +
+			String(arr2[7].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1[1].value) +
+			String(arr1[4].value) +
+			String(arr1[7].value) ===
+      String(arr3[1].value) +
+			String(arr3[4].value) +
+			String(arr3[7].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+    } else if (
+			String(arr1[2].value) +
+			String(arr1[5].value) +
+			String(arr1[8].value) ===
+      String(arr2[2].value) +
+			String(arr2[5].value) +
+			String(arr2[8].value)
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1[2].value) +
+			String(arr1[5].value) +
+			String(arr1[8].value) ===
+      String(arr3[2].value) +
+			String(arr3[5].value) +
+			String(arr3[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true
