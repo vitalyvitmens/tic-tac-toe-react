@@ -1,9 +1,9 @@
 import styles from './Field.module.css'
 import PropTypes from 'prop-types'
 
-const FieldLayout = ({ field, currentPlayer, handlechange }) => (
+const FieldLayout = ({ field, handlechange }) => (
 	<div className={styles.box}>
-		{field.map((cell, index, arr) => {
+		{field.map((cell, index) => {
 			return (
 				<button
 					className={cell.value === 'X' ? styles.x : styles.o}
@@ -25,22 +25,14 @@ const FieldLayout = ({ field, currentPlayer, handlechange }) => (
 
 FieldLayout.propTypes = {
 	field: PropTypes.array,
-	currentPlayer: PropTypes.string,
 	handlechange: PropTypes.func,
 }
 
-export const Field = ({ field, currentPlayer, handlechange }) => {
+export const Field = ({ field, handlechange }) => {
 	Field.propTypes = {
 		field: PropTypes.array,
-		currentPlayer: PropTypes.string,
 		handlechange: PropTypes.func,
 	}
 
-	return (
-		<FieldLayout
-			field={field}
-			currentPlayer={currentPlayer}
-			handlechange={handlechange}
-		/>
-	)
+	return <FieldLayout field={field} handlechange={handlechange} />
 }
