@@ -18,6 +18,13 @@ InformationLayout.propTypes = {
 }
 
 export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
+	Information.propTypes = {
+		isDraw: PropTypes.bool,
+		isGameEnded: PropTypes.bool,
+		currentPlayer: PropTypes.string,
+		field: PropTypes.array,
+	}
+
 	const winX = [
 		{ value: 'X' },
 		{ value: 'X' },
@@ -86,111 +93,71 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 			isGameEnded = true
 			return 'O'
 		} else if (
-			String(arr1[2].value) +
-			String(arr1[4].value) +
-			String(arr1[6].value) ===
-      String(arr2[2].value) +
-			String(arr2[4].value) +
-			String(arr2[6].value)
+			String(arr1[2].value) + String(arr1[4].value) + String(arr1[6].value) ===
+			String(arr2[2].value) + String(arr2[4].value) + String(arr2[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1[2].value) +
-			String(arr1[4].value) +
-			String(arr1[6].value) ===
-      String(arr3[2].value) +
-			String(arr3[4].value) +
-			String(arr3[6].value)
+			String(arr1[2].value) + String(arr1[4].value) + String(arr1[6].value) ===
+			String(arr3[2].value) + String(arr3[4].value) + String(arr3[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
 		} else if (
-			String(arr1[0].value) +
-			String(arr1[4].value) +
-			String(arr1[8].value) ===
-      String(arr2[0].value) +
-			String(arr2[4].value) +
-			String(arr2[8].value)
+			String(arr1[0].value) + String(arr1[4].value) + String(arr1[8].value) ===
+			String(arr2[0].value) + String(arr2[4].value) + String(arr2[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1[0].value) +
-			String(arr1[4].value) +
-			String(arr1[8].value) ===
-      String(arr3[0].value) +
-			String(arr3[4].value) +
-			String(arr3[8].value)
+			String(arr1[0].value) + String(arr1[4].value) + String(arr1[8].value) ===
+			String(arr3[0].value) + String(arr3[4].value) + String(arr3[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
-    } else if (
-			String(arr1[0].value) +
-			String(arr1[3].value) +
-			String(arr1[6].value) ===
-      String(arr2[0].value) +
-			String(arr2[3].value) +
-			String(arr2[6].value)
+		} else if (
+			String(arr1[0].value) + String(arr1[3].value) + String(arr1[6].value) ===
+			String(arr2[0].value) + String(arr2[3].value) + String(arr2[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1[0].value) +
-			String(arr1[3].value) +
-			String(arr1[6].value) ===
-      String(arr3[0].value) +
-			String(arr3[3].value) +
-			String(arr3[6].value)
+			String(arr1[0].value) + String(arr1[3].value) + String(arr1[6].value) ===
+			String(arr3[0].value) + String(arr3[3].value) + String(arr3[6].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
-    } else if (
-			String(arr1[1].value) +
-			String(arr1[4].value) +
-			String(arr1[7].value) ===
-      String(arr2[1].value) +
-			String(arr2[4].value) +
-			String(arr2[7].value)
+		} else if (
+			String(arr1[1].value) + String(arr1[4].value) + String(arr1[7].value) ===
+			String(arr2[1].value) + String(arr2[4].value) + String(arr2[7].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1[1].value) +
-			String(arr1[4].value) +
-			String(arr1[7].value) ===
-      String(arr3[1].value) +
-			String(arr3[4].value) +
-			String(arr3[7].value)
+			String(arr1[1].value) + String(arr1[4].value) + String(arr1[7].value) ===
+			String(arr3[1].value) + String(arr3[4].value) + String(arr3[7].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'O'
-    } else if (
-			String(arr1[2].value) +
-			String(arr1[5].value) +
-			String(arr1[8].value) ===
-      String(arr2[2].value) +
-			String(arr2[5].value) +
-			String(arr2[8].value)
+		} else if (
+			String(arr1[2].value) + String(arr1[5].value) + String(arr1[8].value) ===
+			String(arr2[2].value) + String(arr2[5].value) + String(arr2[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1[2].value) +
-			String(arr1[5].value) +
-			String(arr1[8].value) ===
-      String(arr3[2].value) +
-			String(arr3[5].value) +
-			String(arr3[8].value)
+			String(arr1[2].value) + String(arr1[5].value) + String(arr1[8].value) ===
+			String(arr3[2].value) + String(arr3[5].value) + String(arr3[8].value)
 		) {
 			isDraw = false
 			isGameEnded = true

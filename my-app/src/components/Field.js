@@ -30,6 +30,12 @@ FieldLayout.propTypes = {
 }
 
 export const Field = ({ field, currentPlayer, handlechange }) => {
+	Field.propTypes = {
+		field: PropTypes.array,
+		currentPlayer: PropTypes.string,
+		handlechange: PropTypes.func,
+	}
+
 	return (
 		<FieldLayout
 			field={field}
