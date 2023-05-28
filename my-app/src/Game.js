@@ -13,6 +13,7 @@ const GameLayout = ({
 	ResetButton,
 	setIsDraw,
 	setIsGameEnded,
+	winner,
 }) => (
 	<div className={styles.game}>
 		<Information
@@ -22,6 +23,7 @@ const GameLayout = ({
 			field={field}
 			setIsDraw={setIsDraw}
 			setIsGameEnded={setIsGameEnded}
+			winner={winner}
 		/>
 		<Field
 			field={field}
@@ -41,6 +43,7 @@ GameLayout.propTypes = {
 	ResetButton: PropTypes.func,
 	setIsDraw: PropTypes.func,
 	setIsGameEnded: PropTypes.func,
+	winner: PropTypes.func,
 }
 
 export const Game = () => {
@@ -66,6 +69,8 @@ export const Game = () => {
 		setField(newField)
 		if (field.filter((el) => el.value === '').length === 0) {
 			setIsGameEnded(true)
+			setIsDraw(true)
+		} else {
 		}
 	}
 

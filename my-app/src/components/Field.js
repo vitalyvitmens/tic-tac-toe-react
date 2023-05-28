@@ -9,7 +9,6 @@ const FieldLayout = ({ field, currentPlayer, handlechange }) => (
 					className={currentPlayer === 'X' ? styles.x : styles.o}
 					onClick={() => {
 						if (!cell.value) {
-							// console.log(index, cell, cell.value, arr)
 							handlechange(index)
 						} else {
 							return

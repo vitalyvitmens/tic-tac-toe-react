@@ -1,10 +1,10 @@
 import styles from './Information.module.css'
 import PropTypes from 'prop-types'
 
-const InformationLayout = ({ isDraw, isGameEnded, currentPlayer }) => (
+const InformationLayout = ({ isDraw, isGameEnded, currentPlayer, win }) => (
 	<div className={styles.field}>
 		<div>{isDraw ? 'Ничья' : null}</div>
-		<div>{!isDraw && isGameEnded ? `Победа: ${currentPlayer}` : null}</div>
+		<div>{!isDraw && isGameEnded ? `Победа: ${win}` : null}</div>{' '}
 		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
 		<div>{isGameEnded ? 'Конец игры!' : null}</div>
 	</div>
@@ -14,97 +14,125 @@ InformationLayout.propTypes = {
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
 	currentPlayer: PropTypes.string,
+	win: PropTypes.string,
 }
 
-export const Information = ({
-	isDraw,
-	isGameEnded,
-	currentPlayer,
-	field,
-	setIsDraw,
-	setIsGameEnded,
-}) => {
-	const winnerX = () => {
-		const winX = [
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-			{ value: 'X' },
-		]
+export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
+	const winX = [
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+		{ value: 'X' },
+	]
+
+	const winO = [
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+		{ value: 'O' },
+	]
+
+	const winner = (arr1, arr2, arr3) => {
 		if (
-			!winX
-				.slice(0, 3)
-				.find((item, index) => item.value !== field.slice(0, 3)[index].value)
+			String(arr1.slice(0, 3).map((el) => el.value)) ===
+			String(arr2.slice(0, 3).map((el) => el.value))
 		) {
-			console.log('Победа: X')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
+			isDraw = false
+			isGameEnded = true
+			return 'X'
 		} else if (
-			!winX
-				.slice(3, 6)
-				.find((item, index) => item.value !== field.slice(3, 6)[index].value)
+			String(arr1.slice(0, 3).map((el) => el.value)) ===
+			String(arr3.slice(0, 3).map((el) => el.value))
 		) {
-			console.log('Победа: X')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
+			isDraw = false
+			isGameEnded = true
+			return 'O'
 		} else if (
-			!winX
-				.slice(6, 9)
-				.find((item, index) => item.value !== field.slice(6, 9)[index].value)
+			String(arr1.slice(3, 6).map((el) => el.value)) ===
+			String(arr2.slice(3, 6).map((el) => el.value))
 		) {
-			console.log('Победа: X')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1.slice(3, 6).map((el) => el.value)) ===
+			String(arr3.slice(3, 6).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+		} else if (
+			String(arr1.slice(6, 9).map((el) => el.value)) ===
+			String(arr2.slice(6, 9).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1.slice(6, 9).map((el) => el.value)) ===
+			String(arr3.slice(6, 9).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+		} else if (
+			String(arr1.slice(2, 3).map((el) => el.value)) &&
+			String(arr1.slice(4, 5).map((el) => el.value)) &&
+			String(arr1.slice(6, 7).map((el) => el.value)) ===
+				String(arr2.slice(2, 3).map((el) => el.value)) &&
+			String(arr2.slice(4, 5).map((el) => el.value)) &&
+			String(arr2.slice(6, 7).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1.slice(2, 3).map((el) => el.value)) &&
+			String(arr1.slice(4, 5).map((el) => el.value)) &&
+			String(arr1.slice(6, 7).map((el) => el.value)) ===
+				String(arr3.slice(2, 3).map((el) => el.value)) &&
+			String(arr3.slice(4, 5).map((el) => el.value)) &&
+			String(arr3.slice(6, 7).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
+		} else if (
+			String(arr1.slice(0, 1).map((el) => el.value)) &&
+			String(arr1.slice(4, 5).map((el) => el.value)) &&
+			String(arr1.slice(8, 9).map((el) => el.value)) ===
+				String(arr2.slice(0, 1).map((el) => el.value)) &&
+			String(arr2.slice(4, 5).map((el) => el.value)) &&
+			String(arr2.slice(8, 9).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'X'
+		} else if (
+			String(arr1.slice(0, 1).map((el) => el.value)) &&
+			String(arr1.slice(4, 5).map((el) => el.value)) &&
+			String(arr1.slice(8, 9).map((el) => el.value)) ===
+				String(arr3.slice(0, 1).map((el) => el.value)) &&
+			String(arr3.slice(4, 5).map((el) => el.value)) &&
+			String(arr3.slice(8, 9).map((el) => el.value))
+		) {
+			isDraw = false
+			isGameEnded = true
+			return 'O'
 		}
 	}
 
-  winnerX()
-
-	const winnerO = () => {
-		const winO = [
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-			{ value: 'O' },
-		]
-		if (
-			!winO
-				.slice(0, 3)
-				.find((item, index) => item.value !== field.slice(0, 3)[index].value)
-		) {
-			console.log('Победа: O')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
-		} else if (
-			!winO
-				.slice(3, 6)
-				.find((item, index) => item.value !== field.slice(3, 6)[index].value)
-		) {
-			console.log('Победа: O')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
-		} else if (
-			!winO
-				.slice(6, 9)
-				.find((item, index) => item.value !== field.slice(6, 9)[index].value)
-		) {
-			console.log('Победа: O')
-			// setIsDraw(false)
-			// setIsGameEnded(true)
-		}
-	}
-
-  winnerO()
+	let win = winner(field, winX, winO)
 
 	return (
 		<InformationLayout
@@ -112,6 +140,7 @@ export const Information = ({
 			isGameEnded={isGameEnded}
 			currentPlayer={currentPlayer}
 			field={field}
+			win={win}
 		/>
 	)
 }
