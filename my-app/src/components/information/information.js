@@ -1,4 +1,4 @@
-import styles from './Information.module.css'
+import styles from './information.module.css'
 import PropTypes from 'prop-types'
 
 const InformationLayout = ({ isDraw, isGameEnded, currentPlayer, win }) => (

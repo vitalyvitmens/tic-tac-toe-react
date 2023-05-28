@@ -1,4 +1,4 @@
-import styles from './Field.module.css'
+import styles from './field.module.css'
 import PropTypes from 'prop-types'
 
 const FieldLayout = ({ field, handleChange }) => (

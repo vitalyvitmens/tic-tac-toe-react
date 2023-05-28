@@ -1,5 +1,5 @@
-import { Information } from './components/Information'
-import { Field } from './components/Field'
+import { Information } from './components/information/information'
+import { Field } from './components/field/field'
 import styles from './app.module.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
@@ -58,7 +58,7 @@ export const Game = () => {
 			setIsGameEnded(true)
 			setIsDraw(true)
 		} else {
-      return
+			return
 		}
 	}
 
