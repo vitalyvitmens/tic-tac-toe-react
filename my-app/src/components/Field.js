@@ -6,7 +6,7 @@ const FieldLayout = ({ field, currentPlayer, handlechange }) => (
 		{field.map((cell, index, arr) => {
 			return (
 				<button
-					className={currentPlayer === 'X' ? styles.x : styles.o}
+					className={cell.value === 'X' ? styles.x : styles.o}
 					onClick={() => {
 						if (!cell.value) {
 							handlechange(index)
