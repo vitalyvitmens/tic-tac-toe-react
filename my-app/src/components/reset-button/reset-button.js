@@ -1,4 +1,4 @@
-import styles from './reset.button.module.css'
+import styles from './reset-button.module.css'
 import PropTypes from 'prop-types'
 
 const ResetButtonLayout = ({ ResetButtonFn }) => (
