@@ -20,7 +20,11 @@ const GameLayout = ({
 			isGameEnded={isGameEnded}
 			field={field}
 		/>
-		<Field field={field} handleChange={handleChange} />
+		<Field
+			field={field}
+			handleChange={handleChange}
+			isGameEnded={isGameEnded}
+		/>
 		<ResetButton
 			setField={setField}
 			setIsDraw={setIsDraw}
