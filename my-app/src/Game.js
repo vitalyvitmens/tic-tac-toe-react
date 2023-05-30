@@ -1,6 +1,4 @@
-import { Information } from './components/information/information'
-import { Field } from './components/field/field'
-import { ResetButton } from './components/reset.button/reset.button'
+import { Information, Field, ResetButton } from './components/index'
 import styles from './app.module.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
