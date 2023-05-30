@@ -1,10 +1,10 @@
 import styles from './information.module.css'
 import PropTypes from 'prop-types'
 
-const InformationLayout = ({ currentPlayer, isDraw, isGameEnded, win }) => (
+const InformationLayout = ({ currentPlayer, isDraw, isGameEnded, winner }) => (
 	<div className={styles.field}>
 		<div>{isDraw ? 'Ничья' : null}</div>
-		<div>{!isDraw && isGameEnded ? `Победа: ${win}` : null}</div>
+		<div>{!isDraw && isGameEnded ? `Победа: ${winner}` : null}</div>
 		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
 		<div>{isGameEnded ? 'Конец игры!' : null}</div>
 	</div>
@@ -14,11 +14,11 @@ InformationLayout.propTypes = {
 	currentPlayer: PropTypes.string,
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
-	win: PropTypes.string,
+	winner: PropTypes.string,
 }
 
 export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
-	const winX = [
+	const winnerArrX = [
 		{ value: 'X' },
 		{ value: 'X' },
 		{ value: 'X' },
@@ -30,7 +30,7 @@ export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 		{ value: 'X' },
 	]
 
-	const winO = [
+	const winnerArrO = [
 		{ value: 'O' },
 		{ value: 'O' },
 		{ value: 'O' },
@@ -42,45 +42,37 @@ export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 		{ value: 'O' },
 	]
 
-	const winner = (arr1, arr2, arr3) => {
+	const whoIsWinnerFn = (arr1, arr2, arr3) => {
+		const compareArrBySlice = (start, end, arr1, arr2) =>
+			String(arr1.slice(start, end).map((el) => el.value)) ===
+			String(arr2.slice(start, end).map((el) => el.value))
+
+		const compareArrByIndex = (a, b, c, arr1, arr2) =>
+			String(arr1[a].value) + String(arr1[b].value) + String(arr1[c].value) ===
+			String(arr2[a].value) + String(arr2[b].value) + String(arr2[c].value)
+
 		if (
-			String(arr1.slice(0, 3).map((el) => el.value)) ===
-				String(arr2.slice(0, 3).map((el) => el.value)) ||
-			String(arr1.slice(3, 6).map((el) => el.value)) ===
-				String(arr2.slice(3, 6).map((el) => el.value)) ||
-			String(arr1.slice(6, 9).map((el) => el.value)) ===
-				String(arr2.slice(6, 9).map((el) => el.value)) ||
-			String(arr1[2].value) + String(arr1[4].value) + String(arr1[6].value) ===
-				String(arr2[2].value) + String(arr2[4].value) + String(arr2[6].value) ||
-			String(arr1[0].value) + String(arr1[4].value) + String(arr1[8].value) ===
-				String(arr2[0].value) + String(arr2[4].value) + String(arr2[8].value) ||
-			String(arr1[0].value) + String(arr1[3].value) + String(arr1[6].value) ===
-				String(arr2[0].value) + String(arr2[3].value) + String(arr2[6].value) ||
-			String(arr1[1].value) + String(arr1[4].value) + String(arr1[7].value) ===
-				String(arr2[1].value) + String(arr2[4].value) + String(arr2[7].value) ||
-			String(arr1[2].value) + String(arr1[5].value) + String(arr1[8].value) ===
-				String(arr2[2].value) + String(arr2[5].value) + String(arr2[8].value)
+			compareArrBySlice(0, 3, arr1, arr2) ||
+			compareArrBySlice(3, 6, arr1, arr2) ||
+			compareArrBySlice(6, 9, arr1, arr2) ||
+			compareArrByIndex(2, 4, 6, arr1, arr2) ||
+			compareArrByIndex(0, 4, 8, arr1, arr2) ||
+			compareArrByIndex(0, 3, 6, arr1, arr2) ||
+			compareArrByIndex(1, 4, 7, arr1, arr2) ||
+			compareArrByIndex(2, 5, 8, arr1, arr2)
 		) {
 			isDraw = false
 			isGameEnded = true
 			return 'X'
 		} else if (
-			String(arr1.slice(0, 3).map((el) => el.value)) ===
-				String(arr3.slice(0, 3).map((el) => el.value)) ||
-			String(arr1.slice(3, 6).map((el) => el.value)) ===
-				String(arr3.slice(3, 6).map((el) => el.value)) ||
-			String(arr1.slice(6, 9).map((el) => el.value)) ===
-				String(arr3.slice(6, 9).map((el) => el.value)) ||
-			String(arr1[2].value) + String(arr1[4].value) + String(arr1[6].value) ===
-				String(arr3[2].value) + String(arr3[4].value) + String(arr3[6].value) ||
-			String(arr1[0].value) + String(arr1[4].value) + String(arr1[8].value) ===
-				String(arr3[0].value) + String(arr3[4].value) + String(arr3[8].value) ||
-			String(arr1[0].value) + String(arr1[3].value) + String(arr1[6].value) ===
-				String(arr3[0].value) + String(arr3[3].value) + String(arr3[6].value) ||
-			String(arr1[1].value) + String(arr1[4].value) + String(arr1[7].value) ===
-				String(arr3[1].value) + String(arr3[4].value) + String(arr3[7].value) ||
-			String(arr1[2].value) + String(arr1[5].value) + String(arr1[8].value) ===
-				String(arr3[2].value) + String(arr3[5].value) + String(arr3[8].value)
+			compareArrBySlice(0, 3, arr1, arr3) ||
+			compareArrBySlice(3, 6, arr1, arr3) ||
+			compareArrBySlice(6, 9, arr1, arr3) ||
+			compareArrByIndex(2, 4, 6, arr1, arr3) ||
+			compareArrByIndex(0, 4, 8, arr1, arr3) ||
+			compareArrByIndex(0, 3, 6, arr1, arr3) ||
+			compareArrByIndex(1, 4, 7, arr1, arr3) ||
+			compareArrByIndex(2, 5, 8, arr1, arr3)
 		) {
 			isDraw = false
 			isGameEnded = true
@@ -90,7 +82,7 @@ export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 		}
 	}
 
-	let win = winner(field, winX, winO)
+	let winner = whoIsWinnerFn(field, winnerArrX, winnerArrO)
 
 	return (
 		<InformationLayout
@@ -98,7 +90,7 @@ export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
 			field={field}
-			win={win}
+			winner={winner}
 		/>
 	)
 }
@@ -108,5 +100,5 @@ Information.propTypes = {
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
 	field: PropTypes.array,
-	win: PropTypes.string,
+	winner: PropTypes.string,
 }
