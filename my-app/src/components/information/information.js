@@ -1,23 +1,23 @@
 import styles from './information.module.css'
 import PropTypes from 'prop-types'
 
-const InformationLayout = ({ isDraw, isGameEnded, currentPlayer, win }) => (
+const InformationLayout = ({ currentPlayer, isDraw, isGameEnded, win }) => (
 	<div className={styles.field}>
 		<div>{isDraw ? 'Ничья' : null}</div>
-		<div>{!isDraw && isGameEnded ? `Победа: ${win}` : null}</div>{' '}
+		<div>{!isDraw && isGameEnded ? `Победа: ${win}` : null}</div>
 		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
 		<div>{isGameEnded ? 'Конец игры!' : null}</div>
 	</div>
 )
 
 InformationLayout.propTypes = {
+	currentPlayer: PropTypes.string,
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
-	currentPlayer: PropTypes.string,
 	win: PropTypes.string,
 }
 
-export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
+export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 	const winX = [
 		{ value: 'X' },
 		{ value: 'X' },
@@ -164,9 +164,9 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 
 	return (
 		<InformationLayout
+			currentPlayer={currentPlayer}
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
-			currentPlayer={currentPlayer}
 			field={field}
 			win={win}
 		/>
@@ -174,9 +174,9 @@ export const Information = ({ isDraw, isGameEnded, currentPlayer, field }) => {
 }
 
 Information.propTypes = {
+	currentPlayer: PropTypes.string,
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
-	currentPlayer: PropTypes.string,
 	field: PropTypes.array,
 	win: PropTypes.string,
 }

@@ -8,13 +8,7 @@ const FieldLayout = ({ field, handleChange }) => (
 				<button
 					className={cell.value === 'X' ? styles.x : styles.o}
 					key={index}
-					onClick={() => {
-						if (!cell.value) {
-							handleChange(index)
-						} else {
-							return
-						}
-					}}
+					onClick={() => (!cell.value ? handleChange(index) : null)}
 				>
 					{cell.value}
 				</button>

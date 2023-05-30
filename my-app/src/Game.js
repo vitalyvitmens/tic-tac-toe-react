@@ -1,36 +1,45 @@
 import { Information } from './components/information/information'
 import { Field } from './components/field/field'
+import { ResetButton } from './components/reset.button/reset.button'
 import styles from './app.module.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const GameLayout = ({
+	currentPlayer,
 	isDraw,
 	isGameEnded,
-	currentPlayer,
 	field,
 	handleChange,
-	ResetButton,
+	setField,
+	setIsDraw,
+	setIsGameEnded,
 }) => (
 	<div className={styles.game}>
 		<Information
+			currentPlayer={currentPlayer}
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
-			currentPlayer={currentPlayer}
 			field={field}
 		/>
 		<Field field={field} handleChange={handleChange} />
-		<ResetButton ResetButton={ResetButton} />
+		<ResetButton
+			setField={setField}
+			setIsDraw={setIsDraw}
+			setIsGameEnded={setIsGameEnded}
+		/>
 	</div>
 )
 
 GameLayout.propTypes = {
+	currentPlayer: PropTypes.string,
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
-	currentPlayer: PropTypes.string,
 	field: PropTypes.array,
 	handleChange: PropTypes.func,
-	ResetButton: PropTypes.func,
+	setField: PropTypes.func,
+	setIsDraw: PropTypes.func,
+	setIsGameEnded: PropTypes.func,
 }
 
 export const Game = () => {
@@ -55,44 +64,23 @@ export const Game = () => {
 		newField[index].value = currentPlayer
 		setField(newField)
 		if (field.filter((el) => el.value === '').length === 0) {
-			setIsGameEnded(true)
 			setIsDraw(true)
+			setIsGameEnded(true)
 		} else {
 			return
 		}
 	}
 
-	const ResetButton = () => (
-		<button
-			className={styles.resetBtn}
-			onClick={() => {
-				setField([
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-					{ value: '' },
-				])
-				setIsGameEnded(false)
-				setIsDraw(false)
-			}}
-		>
-			Начать заново
-		</button>
-	)
-
 	return (
 		<GameLayout
+			currentPlayer={currentPlayer}
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
-			currentPlayer={currentPlayer}
 			field={field}
 			handleChange={handleChange}
-			ResetButton={ResetButton}
+			setField={setField}
+			setIsDraw={setIsDraw}
+			setIsGameEnded={setIsGameEnded}
 		/>
 	)
 }
