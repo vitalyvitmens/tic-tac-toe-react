@@ -1,18 +1,10 @@
-import styles from './information.module.css'
 import PropTypes from 'prop-types'
+import styles from './information-module.css'
 
-export const InformationLayout = ({ currentPlayer, isDraw, isGameEnded, winner }) => (
-	<div className={styles.field}>
-		<div>{isDraw ? 'Ничья' : null}</div>
-		<div>{!isDraw && isGameEnded ? `Победа: ${winner}` : null}</div>
-		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
-		<div>{isGameEnded ? 'Конец игры!' : null}</div>
-	</div>
+export const InformationLayout = ({ information }) => (
+	<div className={styles.information}>{information}</div>
 )
 
 InformationLayout.propTypes = {
-	// currentPlayer: PropTypes.string,
-	isDraw: PropTypes.bool,
-	isGameEnded: PropTypes.bool,
-	winner: PropTypes.string,
+	information: PropTypes.string,
 }

@@ -1,20 +1,14 @@
-import { FieldLayout } from './field-layout'
 import PropTypes from 'prop-types'
+import { FieldLayout } from './field-layout'
+import { PLAYER } from '../../constants'
 
-export const Field = ({ handleChange, isGameEnded }) => {
-  const field = new Array(9).fill('')
-
-	return (
-		<FieldLayout
-			field={field}
-			handleChange={handleChange}
-			isGameEnded={isGameEnded}
-		/>
-	)
+export const Field = ({ field, handleCellClick }) => {
+	return <FieldLayout field={field} handleCellClick={handleCellClick} />
 }
 
 Field.propTypes = {
-	field: PropTypes.array,
-	handleChange: PropTypes.func,
-	isGameEnded: PropTypes.bool,
+	field: PropTypes.arrayOf(
+		PropTypes.oneOf([PLAYER.CROSS, PLAYER.NOUGHT, PLAYER.NOBODY])
+	),
+	handleCellClick: PropTypes.func,
 }

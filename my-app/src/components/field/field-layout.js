@@ -1,23 +1,24 @@
-import styles from './field.module.css'
 import PropTypes from 'prop-types'
+import { PLAYER, PLAYER_SIGN } from '../../constants'
+import styles from './field.module.css'
 
-export const FieldLayout = ({ field, handleChange, isGameEnded }) => (
+export const FieldLayout = ({ field, handleCellClick }) => (
 	<div className={styles.field}>
 		{field.map((cellPlayer, index) => (
 			<button
-				className={cellPlayer.value === 'X' ? styles.x : styles.o}
 				key={index}
-				onClick={() => (!cellPlayer.value ? handleChange(index) : null)}
-				disabled={isGameEnded}
+				className={styles.cell}
+				onClick={() => handleCellClick(index)}
 			>
-				{cellPlayer.value}
+				{PLAYER_SIGN[cellPlayer]}
 			</button>
 		))}
 	</div>
 )
 
 FieldLayout.propTypes = {
-	field: PropTypes.array,
-	handleChange: PropTypes.func,
-	isGameEnded: PropTypes.bool,
+	field: PropTypes.arrayOf(
+		PropTypes.oneOf([PLAYER.CROSS, PLAYER.NOUGHT, PLAYER.NOBODY])
+	),
+	handleCellClick: PropTypes.func,
 }
