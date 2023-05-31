@@ -1,6 +1,7 @@
-.box {
-	margin: auto;
+.field {
 	width: 380px;
+	align-items: center;
+	margin: 25px auto;
 }
 
 .x {

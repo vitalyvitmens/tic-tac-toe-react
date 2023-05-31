@@ -1,23 +1,17 @@
-import styles from './information.module.css'
+import { PLAYER, STATUS } from '../../constants'
+import { InformationLayout } from './information-layout'
 import PropTypes from 'prop-types'
 
-const InformationLayout = ({ currentPlayer, isDraw, isGameEnded, winner }) => (
-	<div className={styles.field}>
-		<div>{isDraw ? 'Ничья' : null}</div>
-		<div>{!isDraw && isGameEnded ? `Победа: ${winner}` : null}</div>
-		<div>{!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}</div>
-		<div>{isGameEnded ? 'Конец игры!' : null}</div>
-	</div>
-)
+export const Information = ({
+	status,
+	currentPlayer,
+	isDraw,
+	isGameEnded,
+	field,
+}) => {
 
-InformationLayout.propTypes = {
-	currentPlayer: PropTypes.string,
-	isDraw: PropTypes.bool,
-	isGameEnded: PropTypes.bool,
-	winner: PropTypes.string,
-}
 
-export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
+
 	const winnerArrX = [
 		{ value: 'X' },
 		{ value: 'X' },
@@ -96,7 +90,7 @@ export const Information = ({ currentPlayer, isDraw, isGameEnded, field }) => {
 }
 
 Information.propTypes = {
-	currentPlayer: PropTypes.string,
+	// currentPlayer: PropTypes.string,
 	isDraw: PropTypes.bool,
 	isGameEnded: PropTypes.bool,
 	field: PropTypes.array,

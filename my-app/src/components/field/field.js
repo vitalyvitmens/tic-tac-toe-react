@@ -1,30 +1,9 @@
-import styles from './field.module.css'
+import { FieldLayout } from './field-layout'
 import PropTypes from 'prop-types'
 
-const FieldLayout = ({ field, handleChange, isGameEnded }) => (
-	<div className={styles.box}>
-		{field.map((cell, index) => {
-			return (
-				<button
-					className={cell.value === 'X' ? styles.x : styles.o}
-					key={index}
-					onClick={() => (!cell.value ? handleChange(index) : null)}
-					disabled={isGameEnded}
-				>
-					{cell.value}
-				</button>
-			)
-		})}
-	</div>
-)
+export const Field = ({ handleChange, isGameEnded }) => {
+  const field = new Array(9).fill('')
 
-FieldLayout.propTypes = {
-	field: PropTypes.array,
-	handleChange: PropTypes.func,
-	isGameEnded: PropTypes.bool,
-}
-
-export const Field = ({ field, handleChange, isGameEnded }) => {
 	return (
 		<FieldLayout
 			field={field}

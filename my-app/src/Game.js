@@ -1,51 +1,10 @@
-import { Information, Field, ResetButton } from './components/index'
-import styles from './app.module.css'
 import { useState } from 'react'
-import PropTypes from 'prop-types'
-
-const GameLayout = ({
-	currentPlayer,
-	isDraw,
-	isGameEnded,
-	field,
-	handleChange,
-	setField,
-	setIsDraw,
-	setIsGameEnded,
-}) => (
-	<div className={styles.game}>
-		<Information
-			currentPlayer={currentPlayer}
-			isDraw={isDraw}
-			isGameEnded={isGameEnded}
-			field={field}
-		/>
-		<Field
-			field={field}
-			handleChange={handleChange}
-			isGameEnded={isGameEnded}
-		/>
-		<ResetButton
-			setField={setField}
-			setIsDraw={setIsDraw}
-			setIsGameEnded={setIsGameEnded}
-		/>
-	</div>
-)
-
-GameLayout.propTypes = {
-	currentPlayer: PropTypes.string,
-	isDraw: PropTypes.bool,
-	isGameEnded: PropTypes.bool,
-	field: PropTypes.array,
-	handleChange: PropTypes.func,
-	setField: PropTypes.func,
-	setIsDraw: PropTypes.func,
-	setIsGameEnded: PropTypes.func,
-}
+import { GameLayout } from './game-layout'
+import { STATUS, PLAYER } from './constants'
 
 export const Game = () => {
-	const [currentPlayer, setCurrentPlayer] = useState('X')
+	const [status, setStatus] = useState(STATUS.TURN)
+	const [currentPlayer, setCurrentPlayer] = useState(PLAYER.CROSS)
 	const [isGameEnded, setIsGameEnded] = useState(false)
 	const [isDraw, setIsDraw] = useState(false)
 	const [field, setField] = useState([
@@ -75,6 +34,7 @@ export const Game = () => {
 
 	return (
 		<GameLayout
+			status={status}
 			currentPlayer={currentPlayer}
 			isDraw={isDraw}
 			isGameEnded={isGameEnded}
